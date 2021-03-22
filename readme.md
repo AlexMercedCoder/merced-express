@@ -44,6 +44,7 @@ list of generators
 - controller: creates a new controller file and registers it with the HomeRouter
 - model: creates a new model file in the models folder
 - resource: creates a new model and controller, the controller has all API crud routes and is registered with the HomeRouter
+- auth: doesn't need a name argument, will generate boilerplate model, controller and middleware for authentication
 
 example of command usage
 `npm run gen resource User`
