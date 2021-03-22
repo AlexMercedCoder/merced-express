@@ -32,7 +32,7 @@ if (type === "controller") {
      //----------------------------------------
      //  Routes
      //----------------------------------------
-     ${name}Router.get((req, res) => {
+     ${name}Router.get("/",(req, res) => {
        res.json({ hello: "${name}" });
      });
      
@@ -90,7 +90,7 @@ if (type === "model") {
 // Generate routes
 //////////////////////////////////////
 
-if (type === "routes") {
+if (type === "resource") {
   task = async () => {
     // Generate the Model
     let path = `./models/${name}.js`;
@@ -126,6 +126,7 @@ if (type === "routes") {
      //  Import Dependencies
      //----------------------------------------
      import { Router } from "express";
+     import ${name} from "../models/${name}.js";
      
      //----------------------------------------
      //  Create Router
@@ -139,8 +140,35 @@ if (type === "routes") {
      //----------------------------------------
      //  Routes
      //----------------------------------------
-     ${name}Router.get((req, res) => {
-       res.json({ hello: "${name}" });
+
+     // INDEX ROUTE
+     ${name}Router.get("/", async (req, res) => {
+       const all = await ${name}.find({});
+       res.json(all);
+     });
+
+     // CREATE ROUTE
+     ${name}Router.post("/",(req, res) => {
+        const one = await ${name}.create(req.body);
+        res.json(one);
+     });
+
+     // UPDATE ROUTE
+     ${name}Router.put("/:id",(req, res) => {
+        const one = await ${name}.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.json(one);
+     });
+
+     // DESTROY ROUTE
+     ${name}Router.put("/:id",(req, res) => {
+        const one = await ${name}.findByIdAndRemove(req.params.id);
+        res.json(one);
+     });
+
+     // SHOW ROUTE
+     ${name}Router.get("/:id",(req, res) => {
+        const one = await ${name}.findById(req.params.id);
+        res.json(one);
      });
      
      //----------------------------------------

@@ -19,7 +19,7 @@ const HomeRouter = Router();
 //----------------------------------------
 //  Routes
 //----------------------------------------
-HomeRouter.get((req, res) => {
+HomeRouter.get("/",(req, res) => {
   res.json({ hello: "world" });
 });
 
