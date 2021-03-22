@@ -149,32 +149,57 @@ if (type === "resource") {
 
      // INDEX ROUTE
      ${name}Router.get("/", async (req, res) => {
-       const all = await ${name}.find({});
-       res.json(all);
+       try{
+        const all = await ${name}.find({});
+        res.json(all);
+       } catch (error){
+         console.log(error)
+       }
+       
      });
 
      // CREATE ROUTE
      ${name}Router.post("/",(req, res) => {
+       try{
         const one = await ${name}.create(req.body);
         res.json(one);
+       }catch (error){
+         console.log(error)
+       }
+
      });
 
      // UPDATE ROUTE
      ${name}Router.put("/:id",(req, res) => {
+      try{
         const one = await ${name}.findByIdAndUpdate(req.params.id, req.body, {new:true});
         res.json(one);
+      }catch (error){
+        console.log(error)
+      }
+
      });
 
      // DESTROY ROUTE
      ${name}Router.put("/:id",(req, res) => {
+      try{
         const one = await ${name}.findByIdAndRemove(req.params.id);
         res.json(one);
+      }catch (error){
+        console.log(error)
+      }
+
      });
 
      // SHOW ROUTE
      ${name}Router.get("/:id",(req, res) => {
+      try{
         const one = await ${name}.findById(req.params.id);
         res.json(one);
+      }catch (error){
+        console.log(error)
+      }
+
      });
      
      //----------------------------------------
