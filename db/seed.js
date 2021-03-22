@@ -12,7 +12,7 @@ import { log } from "mercedlogger";
 //  Seed, write seed code in function
 //----------------------------------------
 
-mongoose.connection.on("open", () => {
+mongoose.connection.on("open", async () => {
   const seed = async () => {
     log.green("START", "Seeding has Begun");
     //+++++++WRITE SEED CODE BELOW++++++++++++
@@ -21,6 +21,6 @@ mongoose.connection.on("open", () => {
     log.red("END", "Seeding has completed");
   };
 
-  seed();
+  await seed();
   mongoose.disconnect();
 });

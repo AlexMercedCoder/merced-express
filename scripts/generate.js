@@ -161,7 +161,7 @@ if (type === "resource") {
      });
 
      // CREATE ROUTE
-     ${name}Router.post("/",(req, res) => {
+     ${name}Router.post("/", async (req, res) => {
        try{
         const one = await ${name}.create(req.body);
         res.json(one);
@@ -172,7 +172,7 @@ if (type === "resource") {
      });
 
      // UPDATE ROUTE
-     ${name}Router.put("/:id",(req, res) => {
+     ${name}Router.put("/:id",async (req, res) => {
       try{
         const one = await ${name}.findByIdAndUpdate(req.params.id, req.body, {new:true});
         res.json(one);
@@ -183,7 +183,7 @@ if (type === "resource") {
      });
 
      // DESTROY ROUTE
-     ${name}Router.put("/:id",(req, res) => {
+     ${name}Router.put("/:id",async (req, res) => {
       try{
         const one = await ${name}.findByIdAndRemove(req.params.id);
         res.json(one);
@@ -194,7 +194,7 @@ if (type === "resource") {
      });
 
      // SHOW ROUTE
-     ${name}Router.get("/:id",(req, res) => {
+     ${name}Router.get("/:id",async (req, res) => {
       try{
         const one = await ${name}.findById(req.params.id);
         res.json(one);
