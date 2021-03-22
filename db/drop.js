@@ -11,6 +11,7 @@ const drop = async () => {
   mongoose.connection.on("open", async () => {
     await mongoose.connection.db.dropDatabase();
     log.red("DROPPED", "DATABASE HAS BEEN DROPPED")
+    mongoose.disconnect()
   });
 };
 

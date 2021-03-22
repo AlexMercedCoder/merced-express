@@ -1,7 +1,7 @@
 //----------------------------------------
 //  Import Dependencies
 //----------------------------------------
-import mongoose from "./connection";
+import mongoose from "./connection.js";
 import { log } from "mercedlogger";
 
 //----------------------------------------
@@ -12,12 +12,15 @@ import { log } from "mercedlogger";
 //  Seed, write seed code in function
 //----------------------------------------
 
-const seed = async () => {
-  log.green("START", "Seeding has Begun");
-  //+++++++WRITE SEED CODE BELOW++++++++++++
+mongoose.connection.on("open", () => {
+  const seed = async () => {
+    log.green("START", "Seeding has Begun");
+    //+++++++WRITE SEED CODE BELOW++++++++++++
 
-  //+++++++WRITE SEED CODE ABOVE++++++++++++
-  log.red("END", "Seeding has completed");
-};
+    //+++++++WRITE SEED CODE ABOVE++++++++++++
+    log.red("END", "Seeding has completed");
+  };
 
-seed();
+  seed();
+  mongoose.disconnect();
+});

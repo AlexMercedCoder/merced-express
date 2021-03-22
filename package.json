@@ -8,7 +8,8 @@
     "dev": "nodemon server.js",
     "gen": "node scripts/generate.js",
     "seed": "node db/seed.js",
-    "drop": "node db/drop.js"
+    "drop": "node db/drop.js",
+    "reset":"npm run drop && npm run seed"
   },
   "type": "module",
   "keywords": [],

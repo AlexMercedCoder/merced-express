@@ -33,6 +33,10 @@ runs the seed file in db/seed.js
 
 drops the database for quick clearing of data, be careful with this one
 
+### npm run reset
+
+drops the database then runs the seed
+
 ### npm run gen <generator> <name>
 
 list of generators
