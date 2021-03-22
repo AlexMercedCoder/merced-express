@@ -6,7 +6,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import cors from "./config/cors.js";
 import { log } from "mercedlogger";
-import HomeController from "./controllers/HomeController";
+import HomeController from "./controllers/HomeController.js";
 
 //----------------------------------------
 //  Variables
