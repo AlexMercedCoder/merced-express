@@ -46,7 +46,7 @@ if (type === "controller") {
 
     const Home = await files.read("./controllers/HomeController.js");
     const split = Home.split("//xxx");
-    split[0] = split[0] + `import ${name}Controller from './${name}Controller'`;
+    split[0] = split[0] + `import ${name}Controller from './${name}Controller.js'`;
     split[1] = split[1] + `HomeRouter.use('/${name.toLowerCase()}', ${name}Controller)`;
     const result = split.join("\n//xxx\n");
     await files.write("./controllers/HomeController.js", result);
@@ -214,7 +214,7 @@ if (type === "resource") {
     // Generate the Routes
     const Home = await files.read("./controllers/HomeController.js");
     const split = Home.split("//xxx");
-    split[0] = split[0] + `import ${name}Controller from './${name}Controller'`;
+    split[0] = split[0] + `import ${name}Controller from './${name}Controller.js'`;
     split[1] = split[1] + `HomeRouter.use('/${name.toLowerCase()}', ${name}Controller)`;
     const result = split.join("\n//xxx\n");
     await files.write("./controllers/HomeController.js", result);
