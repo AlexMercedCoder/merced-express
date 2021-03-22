@@ -1,4 +1,5 @@
 import files from "files";
+import { log } from "mercedlogger";
 //////////////////////////////////////
 // The Setup
 //////////////////////////////////////
@@ -49,6 +50,10 @@ if (type === "controller") {
     split[1] = split[1] + `HomeRouter.use('/${name}', ${name}Controller)`;
     const result = split.join("\n//xxx\n");
     await files.write("./controllers/HomeController.js", result);
+    log.green(
+      "DONE",
+      "new file created in controllers folder, router registered in HomeController"
+    );
   };
 }
 
@@ -75,7 +80,7 @@ if (type === "model") {
       //  Generate Model
       //----------------------------------------
       
-      const ${name} = model("${name}", TheSchema)
+      const ${name} = model("${name}", ${name}Schema)
       
       //----------------------------------------
       //  Export Module
@@ -83,6 +88,7 @@ if (type === "model") {
       export default ${name}
        `;
     await files.write(path, content);
+    log.green("DONE", "new file created in models folder");
   };
 }
 
@@ -110,7 +116,7 @@ if (type === "resource") {
       //  Generate Model
       //----------------------------------------
       
-      const ${name} = model("${name}", TheSchema)
+      const ${name} = model("${name}", ${name}Schema)
       
       //----------------------------------------
       //  Export Module
@@ -185,6 +191,10 @@ if (type === "resource") {
     split[1] = split[1] + `HomeRouter.use('/${name}', ${name}Controller)`;
     const result = split.join("\n//xxx\n");
     await files.write("./controllers/HomeController.js", result);
+    log.green(
+      "DONE",
+      "new files created in models and controllers, router registered in HomeController"
+    );
   };
 }
 
