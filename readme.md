@@ -55,6 +55,16 @@ all the generators are in scrips/generate.js so feel free to customize them to y
 
 All the cors headers can be configured from config/cors.js, by default set to allow all origins, headers and methods.
 
+## Auth
+
+You can add all the the files needed for user authentication by running the command `npm run gen auth`. It will create...
+
+- A user model you can customize
+
+- A user controller with two pre-made routes for user creation (/user/new) and logging in (/user/login)
+
+- Auth middleware for verifying the JWT tokens returned with creating a user or logging in. This middleware can be added on any router or route you want only accessible to authenticated requests. (The Middleware is written to use brearer token format, feel free to customize)
+
 ## If you enjoy
 
 If you enjoy this tool and would love to make my day here are a few ways to support my efforts:
